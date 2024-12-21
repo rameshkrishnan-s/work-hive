@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Basic styling for the page */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            padding: 1em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        /* Content section styles */
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        button[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Additional styling for responsiveness */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="/post-jobs"><i class="fas fa-plus-circle"></i> Post Jobs</a></li>
+            <li><a href="/about-us"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="/contact-us"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li style="margin-left:auto"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content section -->
+    <div class="content">
+        <h1>Contact Us</h1>
+        <form action="/send-message" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" name="name" placeholder="Your full name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" placeholder="Your email address" required>
+            
+            <label for="message">Message:</label>
+            <textarea name="message" placeholder="Type your message here..." required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>

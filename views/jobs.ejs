@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Jobs</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            padding: 1em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        /* Content section styles */
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        /* Form styles */
+        form {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], select {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Job listing styles */
+        .job-listing {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-listing h2 {
+            margin: 0;
+            color: #007bff;
+        }
+
+        .job-listing p {
+            margin: 5px 0;
+        }
+
+        .apply-button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            text-align: center;
+        }
+
+        .apply-button:hover {
+            background-color: #218838;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="/post-jobs"><i class="fas fa-plus-circle"></i> Post Jobs</a></li>
+            <li><a href="/about-us"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="/contact-us"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li style="margin-left:auto"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content section -->
+    <div class="content">
+        <h1>Available Jobs</h1>
+
+        <!-- Filter form -->
+        <form method="GET" action="/jobs">
+            <label for="locationFilter"><i class="fas fa-map-marker-alt"></i> Location:</label>
+            <input type="text" id="locationFilter" name="location">
+
+            <label for="jobTypeFilter"><i class="fas fa-cogs"></i> Type of Job:</label>
+            <select id="jobTypeFilter" name="jobType">
+                <option value="">All</option>
+                <option value="agriculture">Agriculture</option>
+                <option value="carpentry">Carpentry</option>
+                <option value="catering">Catering</option>
+                <option value="civil_works">Civil Works</option>
+                <option value="household">Household</option>
+                <option value="masonry">Masonry</option>
+                <option value="electrician">Electrician</option>
+                <!-- Add more options as needed -->
+            </select>
+
+            <input type="submit" value="Filter">
+        </form>
+
+        <!-- Job listings -->
+        <% if (jobs.length > 0) { %>
+            <% jobs.forEach(job => { %>
+                <div class="job-listing">
+                    <h2><%= job.jobTitle %></h2>
+                    <p><i class="fas fa-building"></i> Company: <%= job.companyName %></p>
+                    <p><i class="fas fa-pencil-alt"></i> Description: <%= job.jobDescription %></p>
+                    <p><i class="fas fa-envelope"></i> Contact Email: <%= job.contactEmail %></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: <%= job.location %></p>
+                    <p><i class="fas fa-briefcase"></i> Job Type: <%= job.jobType %></p>
+                    <p><i class="fas fa-dollar-sign"></i> Salary: $<%= job.salary %></p> <!-- Display salary -->
+                    <p><i class="fas fa-user"></i> Posted by: <%= job.postedBy.username %></p>
+                    <p><i class="fas fa-calendar-alt"></i> Posted on: <%= job.createdAt.toLocaleDateString() %></p>
+                    <button class="apply-button" onclick="window.location.href='/apply-job/<%= job.id %>'"><i class="fas fa-paper-plane"></i> Apply</button>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No jobs available at the moment.</p>
+        <% } %>
+    </div>
+</body>
+</html>

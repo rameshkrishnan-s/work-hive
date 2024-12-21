@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Job</title>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        /* Base styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            color: #333;
+        }
+
+        /* Navigation bar styles */
+        nav {
+            background-color: #333;
+            padding: 1em 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            font-size: 16px;
+        }
+
+        nav ul li a:hover {
+            background-color: #575757;
+        }
+
+        /* Content section styles */
+        .content {
+            max-width: 800px;
+            margin: 40px auto;
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .content h1 {
+            margin-bottom: 20px;
+            color: #007bff;
+            text-align: center;
+        }
+
+        /* Form styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="text"], input[type="email"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 1rem;
+        }
+
+        textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        input[type="submit"], button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 1rem;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            width: 100%;
+        }
+
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav>
+        <ul>
+            <li><a href="/home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="/jobs"><i class="fas fa-briefcase"></i> Jobs</a></li>
+            <li><a href="/post-jobs"><i class="fas fa-plus-circle"></i> Post Jobs</a></li>
+            <li><a href="/about-us"><i class="fas fa-info-circle"></i> About Us</a></li>
+            <li><a href="/contact-us"><i class="fas fa-envelope"></i> Contact Us</a></li>
+            <li style="margin-left:auto"><a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Content section -->
+    <div class="content">
+        <h1>Post a Job</h1>
+        <form action="/submit-job" method="POST">
+            <label for="jobTitle"><i class="fas fa-briefcase"></i> Job Title:</label>
+            <input type="text" id="jobTitle" name="jobTitle" required>
+
+            <label for="companyName"><i class="fas fa-building"></i> Company Name:</label>
+            <input type="text" id="companyName" name="companyName" required>
+
+            <label for="jobDescription"><i class="fas fa-file-alt"></i> Job Description:</label>
+            <textarea id="jobDescription" name="jobDescription" required></textarea>
+
+            <label for="contactEmail"><i class="fas fa-envelope"></i> Contact Email:</label>
+            <input type="email" id="contactEmail" name="contactEmail" required>
+
+            <label for="location"><i class="fas fa-map-marker-alt"></i> Location:</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="jobType"><i class="fas fa-tags"></i> Job Type:</label>
+            <select id="jobType" name="jobType" required>
+                <option value="">Select Job Type</option>
+                <option value="agriculture">Agriculture</option>
+                <option value="carpentry">Carpentry</option>
+                <option value="catering">Catering</option>
+                <option value="civil-works">Civil Works</option>
+                <option value="household">Household</option>
+                <option value="landscaping">Landscaping</option>
+                <option value="cleaning">Cleaning</option>
+            </select>
+
+            <label for="salary"><i class="fas fa-dollar-sign"></i> Salary:</label>
+            <input type="number" id="salary" name="salary" required>
+
+            <button type="submit"><i class="fas fa-paper-plane"></i> Post Job</button>
+        </form>
+    </div>
+</body>
+</html>
